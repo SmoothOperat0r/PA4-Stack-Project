@@ -4,8 +4,7 @@
 #include "Application.hpp"
 #include "Drawer.hpp"
 #include "GameBoard.hpp"
-
-#include <stack>
+#include "Stack.hpp"
 using namespace std;
 
 class TicTacToe
@@ -30,7 +29,7 @@ private:
 	GameBoard m_board;
 	int m_turn;
 
-	stack<GameBoard> m_gameHistory;
+	Stack<GameBoard> m_gameHistory;
 };
 
 #endif
