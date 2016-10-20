@@ -11,11 +11,12 @@ TicTacToe::TicTacToe(Application* ptrApp, int width, int height)
 	m_drawer.SetApp(m_ptrApp);
 	m_drawer.SetScreenDimensions(width, height);
 	m_turn = 0;
-	m_gameHistory.push(m_board);
+	m_gameHistory.Push(m_board);
 }
 
 TicTacToe::~TicTacToe()
 {
+
 }
 
 void TicTacToe::Main()
@@ -123,20 +124,20 @@ void TicTacToe::Draw()
 
 void TicTacToe::PushHistory()
 {
-	m_gameHistory.push(m_board);
-	cout << m_gameHistory.size() << " moves" << endl;
+	m_gameHistory.Push(m_board);
+	cout << m_gameHistory.GetSize() << " moves" << endl;
 	m_board.Display();
 }
 
 void TicTacToe::UndoLastMove()
 {
-	cout << "Undo last move, stack size: " << m_gameHistory.size() << endl; 
-	if (m_gameHistory.size() >= 1)
+	cout << "Undo last move, stack size: " << m_gameHistory.GetSize() << endl; 
+	if (m_gameHistory.GetSize() >= 1)
 	{
 		// The top-most item is the current state,
 		// so actually need to pop this and then get top.
-		m_gameHistory.pop();
-		m_board = m_gameHistory.top();
+		m_gameHistory.Pop();
+		m_board = m_gameHistory.Top();
 		m_turn--;
 	}
 	m_board.Display();
