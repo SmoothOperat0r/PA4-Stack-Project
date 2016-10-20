@@ -19,7 +19,12 @@ public:
 
 	T& Top()
 	{
-		return m_list.GetBack();
+		try {
+			return m_list.GetBack();
+		}
+		catch (bad_alloc ex) {
+			throw ex;	
+		}
 	}
 
 	int GetSize()
