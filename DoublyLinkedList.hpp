@@ -72,8 +72,12 @@ public:
 
 	void PushBack(T data)
 	{
-
-		Node<T>* newNode = new Node<T>();
+		try {
+			Node<T>* newNode = new Node<T>();
+		}
+		catch (bad_alloc ex) {
+			throw ex;
+		}
 		newNode->m_data = data;
 
 		if (m_ptrFirst == nullptr)
@@ -101,7 +105,12 @@ public:
 			throw out_of_range("Invalid index!");
 		}
 
-		Node<T>* newNode = new Node<T>();
+		try {
+			Node<T>* newNode = new Node<T>();
+		}
+		catch (bad_alloc ex) {
+			throw ex;
+		}
 		newNode->m_data = data;
 
 		if (m_ptrFirst = nullptr)
@@ -137,8 +146,8 @@ public:
 	{
 		if (m_ptrFirst == nullptr)
 		{
-			return;
 			throw logic_error("Error: this list is already empty!");
+			return;
 		}
 		if (m_ptrFirst == m_ptrLast)
 		{
@@ -170,6 +179,7 @@ public:
 
 		if (m_ptrLast == nullptr)
 		{
+			throw logic_error("Error: this list is already empty!")
 			return;
 		}
 
