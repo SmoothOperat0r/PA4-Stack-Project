@@ -9,12 +9,22 @@ class Stack
 public:
 	void Push(T data)
 	{
-		m_list.PushBack(data);
+		try {
+			m_list.PushBack(data);
+		}
+		catch (bad_alloc ex) {
+			throw ex;
+		}
 	}
 
 	void Pop()
 	{
-		m_list.PopBack();
+		try {
+			m_list.PopBack();
+		}
+		catch (logic_error ex) {
+			throw ex;
+		}
 	}
 
 	T& Top()
@@ -23,7 +33,7 @@ public:
 			return m_list.GetBack();
 		}
 		catch (bad_alloc ex) {
-			throw ex;	
+			throw ex;
 		}
 	}
 
@@ -40,5 +50,4 @@ public:
 private:
 	DoublyLinkedList<T> m_list;
 };
-
 #endif
